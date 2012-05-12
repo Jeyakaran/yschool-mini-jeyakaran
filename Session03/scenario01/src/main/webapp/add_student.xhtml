@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  User: Jeyakaran
+  Date: 12/5/12
+  Time: 6:54 PM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Register Student</title>
+</h:head>
+
+<h:body>
+
+   <h:form>
+       <h1> Register Student </h1>
+
+       <h:commandLink value="Home" action="index" immediate="true"/>
+       <h:outputText value="&#160;"/>
+
+       <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;" />
+
+        <h:panelGrid columns="3" >
+            Full Name :
+            <h:inputText id="name" value="#{studentManagedBean.selectedStudent.name}" required="true" label="Full Name" />
+            <h:message for="name" errorStyle="color: red;" infoStyle="color: green;" />
+           Address :
+           <h:inputText id="address" value="#{studentManagedBean.selectedStudent.address}" />
+           <h:outputText value="&#160;"/>
+           Grade :
+           <h:selectOneMenu id="grade" value="#{studentManagedBean.selectedStudent.grade}">
+               <f:selectItem itemValue="1" itemLabel="1"/>
+               <f:selectItem itemValue="2" itemLabel="2"/>
+               <f:selectItem itemValue="3" itemLabel="3"/>
+               <f:selectItem itemValue="4" itemLabel="4"/>
+               <f:selectItem itemValue="5" itemLabel="5"/>
+               <f:selectItem itemValue="6" itemLabel="6"/>
+               <f:selectItem itemValue="7" itemLabel="7"/>
+               <f:selectItem itemValue="8" itemLabel="8"/>
+               <f:selectItem itemValue="9" itemLabel="9"/>
+               <f:selectItem itemValue="10" itemLabel="10"/>
+               <f:selectItem itemValue="11" itemLabel="11"/>
+               <f:selectItem itemValue="12" itemLabel="12"/>
+           </h:selectOneMenu>
+            <h:outputText value="&#160;"/>
+           Parent Name :
+           <h:inputText id="parentName" value="#{studentManagedBean.selectedStudent.parentName}" />
+            <h:outputText value="&#160;"/>
+       </h:panelGrid>
+       <h:commandButton value="Register" actionListener="#{studentManagedBean.addStudent}" />
+
+   </h:form>
+</h:body>
+
+</html>

@@ -18,3 +18,7 @@ mvn archetype:generate -DgroupId=org.ymini.yschool -DartifactId=scenario01 -Darc
 
 To convert the maven project to eclipse dynamic web project 
 mvn eclipse:eclipse -Dwtpversion=2.0
+
+https://github.com/Jeyakaran/yschool-mini-jeyakaran/tree/master/Session03/scenario01/src
+
+git@github.com:Jeyakaran/yschool-mini-jeyakaran.git/Session03/scenario01
