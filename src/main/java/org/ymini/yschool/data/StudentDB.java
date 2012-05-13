@@ -32,7 +32,15 @@ public class StudentDB {
 
     public static void updateStudent(final Student student)
     {
-
+        for(Student dbValue : STUDENT_DB){
+            if(student.name.equals(dbValue.name))
+            {
+                dbValue.setAddress(student.getAddress());
+                dbValue.setGrade(student.getGrade());
+                dbValue.setParentName(student.getParentName());
+                return;
+            }
+        }
     }
 
     public static void addStudent(final Student student)
@@ -42,6 +50,12 @@ public class StudentDB {
 
     public static void deleteStudent(final Student student)
     {
-
+        for(Student dbValue : STUDENT_DB){
+            if(student.name.equals(dbValue.name))
+            {
+                STUDENT_DB.remove(dbValue);
+                return;
+            }
+        }
     }
 }

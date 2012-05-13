@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  User: Jeyakaran
+  Date: 13/5/12
+  Time: 8:06 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Update Student</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h1> Update Student </h1>
+
+        <h:commandLink value="Home" action="index" immediate="true"/>
+        <h:outputText value="&#160;"/>
+        <h:commandLink value="Add Student" action="add_student" immediate="true"/>
+        <h:outputText value="&#160;"/>
+        <h:commandLink value="View Student Details" action="view_student" immediate="true"/>
+
+        <br/>
+
+        <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;" />
+
+        <h:panelGrid columns="2" >
+            Full Name :
+            <h:inputText id="name" value="#{studentManagedBean.selectedStudent.name}" label="Full Name" readonly="studentManagedBean.selectedStudent.name.readonly" />
+            Address :
+            <h:inputTextarea id="address" value="#{studentManagedBean.selectedStudent.address}" />
+            Grade :
+            <h:selectOneMenu id="grade" value="#{studentManagedBean.selectedStudent.grade}">
+                <f:selectItem itemValue="1" itemLabel="1"/>
+                <f:selectItem itemValue="2" itemLabel="2"/>
+                <f:selectItem itemValue="3" itemLabel="3"/>
+                <f:selectItem itemValue="4" itemLabel="4"/>
+                <f:selectItem itemValue="5" itemLabel="5"/>
+                <f:selectItem itemValue="6" itemLabel="6"/>
+                <f:selectItem itemValue="7" itemLabel="7"/>
+                <f:selectItem itemValue="8" itemLabel="8"/>
+                <f:selectItem itemValue="9" itemLabel="9"/>
+                <f:selectItem itemValue="10" itemLabel="10"/>
+                <f:selectItem itemValue="11" itemLabel="11"/>
+                <f:selectItem itemValue="12" itemLabel="12"/>
+            </h:selectOneMenu>
+            Parent Name :
+            <h:inputText id="parentName" value="#{studentManagedBean.selectedStudent.parentName}" />
+        </h:panelGrid>
+        <h:commandButton value="Update" actionListener="#{studentManagedBean.updateStudent}" />
+        <h:commandButton value="Reset" type="reset"/>
+
+    </h:form>
+</h:body>
+
+</html>

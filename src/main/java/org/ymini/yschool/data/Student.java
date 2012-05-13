@@ -53,4 +53,12 @@ public class Student {
     public void setParentName(String parentName) {
         this.parentName = parentName;
     }
+    
+    public void clear()
+    {
+        this.setName("");
+        this.setAddress("");
+        this.setGrade(1);
+        this.setParentName("");
+    }
 }

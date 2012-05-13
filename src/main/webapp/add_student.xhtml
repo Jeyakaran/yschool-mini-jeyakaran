@@ -9,7 +9,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
     <title>Register Student</title>
@@ -23,6 +24,8 @@
        <h:commandLink value="Home" action="index" immediate="true"/>
        <h:outputText value="&#160;"/>
 
+       <br/>
+
        <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;" />
 
         <h:panelGrid columns="3" >
@@ -30,7 +33,7 @@
             <h:inputText id="name" value="#{studentManagedBean.selectedStudent.name}" required="true" label="Full Name" />
             <h:message for="name" errorStyle="color: red;" infoStyle="color: green;" />
            Address :
-           <h:inputText id="address" value="#{studentManagedBean.selectedStudent.address}" />
+           <h:inputTextarea id="address" value="#{studentManagedBean.selectedStudent.address}" />
            <h:outputText value="&#160;"/>
            Grade :
            <h:selectOneMenu id="grade" value="#{studentManagedBean.selectedStudent.grade}">
@@ -53,6 +56,7 @@
             <h:outputText value="&#160;"/>
        </h:panelGrid>
        <h:commandButton value="Register" actionListener="#{studentManagedBean.addStudent}" />
+       <h:commandButton value="Reset" type="reset"/>
 
    </h:form>
 </h:body>

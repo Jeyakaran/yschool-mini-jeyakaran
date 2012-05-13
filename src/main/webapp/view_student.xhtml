@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  User: Jeyakaran
+  Date: 13/5/12
+  Time: 7:26 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>View Student</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h1> View Student Details </h1>
+
+        <h:commandLink value="Home" action="index" immediate="true"/>
+        <h:outputText value="&#160;"/>
+        <h:commandLink value="Add Student" action="add_student" immediate="true"/>
+
+        <br/>
+
+        <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;" />
+
+        <p:dataTable id="dataTable" var="student" value="#{studentManagedBean.students}">
+            <f:facet name="header">
+                Student List
+            </f:facet>
+
+            <p:column id="nameHeader" sortBy="#{student.name}" >
+                <f:facet name="header">
+                    <h:outputText value="Name" />
+                </f:facet>
+                <h:commandLink value="#{student.name}" action="update_student">
+                    <f:setPropertyActionListener value="#{student}" target="#{studentManagedBean.selectedStudent}"  />
+                </h:commandLink>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Address" />
+                </f:facet>
+                <h:outputText value="#{student.address}" />
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Grade" />
+                </f:facet>
+                <h:outputText value="#{student.grade}" />
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Parent Name" />
+                </f:facet>
+                <h:outputText value="#{student.parentName}" />
+            </p:column>
+        </p:dataTable>
+
+    </h:form>
+</h:body>
+
+</html>

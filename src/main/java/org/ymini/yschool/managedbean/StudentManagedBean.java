@@ -32,14 +32,26 @@ public class StudentManagedBean implements Serializable {
     public void updateStudent()
     {
         StudentDB.updateStudent(selectedStudent);
-
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Student updated successfully ",  null));
     }
 
     public void addStudent()
     {
         StudentDB.addStudent(selectedStudent);
+        selectedStudent = new Student();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Student added successfully ",  null));
+    }
+
+    public void deleteStudent()
+    {
+        StudentDB.deleteStudent(selectedStudent);
+        selectedStudent = new Student();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Student deleted successfully ",  null));
+
+    }
+    public void clear()
+    {
+        this.selectedStudent.clear();
     }
     public List<Student> getStudents() {
         return students;
