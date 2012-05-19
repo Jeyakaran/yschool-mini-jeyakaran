@@ -1,16 +1,28 @@
-package org.ymini.yschool.data;
+package org.ymini.yschool.dao;
+
+
+import javax.persistence.*;
 
 /**
- * Student model class
+ * Student entity class
  * User: Jeyakaran
- * Date: 12/5/12
+ * Date: 19/5/12
  * Time: 7:41 AM
  */
+@Entity
 public class Student {
-    String name;
-    String address;
-    int grade;
-    String parentName;
+    @Id
+    @GeneratedValue
+    @Column(name = "student_sId")
+    private int sId;
+    @Column(name = "student_name")
+    private String name;
+    @Column(name = "student_address")
+    private String address;
+    @Column(name = "student_grade")
+    private int grade;
+    @Column(name = "student_parentName")
+    private String parentName;
 
     public Student() {
     }
@@ -53,12 +65,12 @@ public class Student {
     public void setParentName(String parentName) {
         this.parentName = parentName;
     }
-    
-    public void clear()
-    {
-        this.setName("");
-        this.setAddress("");
-        this.setGrade(1);
-        this.setParentName("");
+
+    public int getsId() {
+        return sId;
+    }
+
+    public void setsId(int sId) {
+        this.sId = sId;
     }
 }

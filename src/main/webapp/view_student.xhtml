@@ -27,41 +27,49 @@
 
         <br/>
 
-        <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;" />
+        <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;"/>
 
-        <p:dataTable id="dataTable" var="student" value="#{studentManagedBean.students}">
+        <p:dataTable id="dataTable" var="student" value="#{studentManagedBean.studentList}">
             <f:facet name="header">
                 Student List
             </f:facet>
 
-            <p:column id="nameHeader" sortBy="#{student.name}" >
+
+            <p:column id="IdHeader" sortBy="#{student.sId}">
                 <f:facet name="header">
-                    <h:outputText value="Name" />
+                    <h:outputText value="Student Id"/>
                 </f:facet>
-                <h:commandLink value="#{student.name}" action="update_student">
-                    <f:setPropertyActionListener value="#{student}" target="#{studentManagedBean.selectedStudent}"  />
+                <h:commandLink value="#{student.sId}" action="update_student">
+                    <f:setPropertyActionListener value="#{student}" target="#{studentManagedBean.selectedStudent}"/>
                 </h:commandLink>
             </p:column>
 
-            <p:column>
+            <p:column id="nameHeader" sortBy="#{student.name}">
                 <f:facet name="header">
-                    <h:outputText value="Address" />
+                    <h:outputText value="Name"/>
                 </f:facet>
-                <h:outputText value="#{student.address}" />
+                <h:outputText value="#{student.name}"/>
             </p:column>
 
             <p:column>
                 <f:facet name="header">
-                    <h:outputText value="Grade" />
+                    <h:outputText value="Address"/>
                 </f:facet>
-                <h:outputText value="#{student.grade}" />
+                <h:outputText value="#{student.address}"/>
             </p:column>
 
             <p:column>
                 <f:facet name="header">
-                    <h:outputText value="Parent Name" />
+                    <h:outputText value="Grade"/>
                 </f:facet>
-                <h:outputText value="#{student.parentName}" />
+                <h:outputText value="#{student.grade}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Parent Name"/>
+                </f:facet>
+                <h:outputText value="#{student.parentName}"/>
             </p:column>
         </p:dataTable>
 

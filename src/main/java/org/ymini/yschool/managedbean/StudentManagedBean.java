@@ -2,12 +2,13 @@ package org.ymini.yschool.managedbean;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.ymini.yschool.data.Student;
-import org.ymini.yschool.data.StudentDB;
+import org.ymini.yschool.dao.Student;
+import org.ymini.yschool.dao.StudentDAO;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.List;
@@ -20,55 +21,37 @@ import java.util.List;
  * Time: 1:23 PM
  */
 @ManagedBean(name = "studentManagedBean")
-@RequestScoped
+@SessionScoped
 public class StudentManagedBean implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(StudentManagedBean.class);
-    private List<Student> students;
     private Student selectedStudent;
     private String message;
+    StudentDAO studentDAO;
 
     public StudentManagedBean() {
-        students = StudentDB.getStudentDb();
-        selectedStudent = new Student();
+        this.selectedStudent = new Student();
+        this.studentDAO = new StudentDAO();
 
         logger.info("Initiated StudentManagedBean");
     }
 
-    public void updateStudent()
-    {
-        StudentDB.updateStudent(selectedStudent);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Student updated successfully ",  null));
+    public List<Student> getStudentList() {
+        return this.studentDAO.getStudentList();
+    }
+
+    public void updateStudent() {
+        this.studentDAO.updateStudent(this.selectedStudent);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Student updated successfully ", null));
 
         logger.info("Updated Student");
     }
 
-    public void addStudent()
-    {
-        StudentDB.addStudent(selectedStudent);
+    public void addStudent() {
+        this.studentDAO.addStudent(selectedStudent);
         selectedStudent = new Student();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Student added successfully ",  null));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Student added successfully ", null));
 
         logger.info("Added new Student");
-    }
-
-    public void deleteStudent()
-    {
-        StudentDB.deleteStudent(selectedStudent);
-        selectedStudent = new Student();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Student deleted successfully ",  null));
-
-        logger.info("Deleted Student");
-    }
-    public void clear()
-    {
-        this.selectedStudent.clear();
-    }
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
     }
 
     public Student getSelectedStudent() {
