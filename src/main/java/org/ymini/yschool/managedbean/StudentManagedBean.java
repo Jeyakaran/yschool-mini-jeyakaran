@@ -73,6 +73,7 @@ public class StudentManagedBean implements Serializable {
 
     public String removeStudent() {
         this.studentDAO.removeStudent(selectedStudent);
+        logger.info("Student removed");
         return "view_student";
     }
 
