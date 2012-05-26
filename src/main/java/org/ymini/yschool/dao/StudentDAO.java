@@ -21,8 +21,12 @@ public class StudentDAO {
         this.entityManager = entityManagerFactory.createEntityManager();
     }
 
+    /*
+    * method returns only active Students
+    */
     public List<Student> getStudentList() {
-        Query query = entityManager.createQuery("select s from Student s");
+        Query query = entityManager.createQuery("select stu from Student stu where stu.active = :activeValue");
+        query.setParameter("activeValue", true);
         return query.getResultList();
     }
 
@@ -49,6 +53,22 @@ public class StudentDAO {
             persistStudent.setAddress(student.getAddress());
             persistStudent.setGrade(student.getGrade());
             persistStudent.setParentName(student.getParentName());
+            entityManager.getTransaction().commit();
+        }
+        return true;
+    }
+
+    public boolean removeStudent(final Student student) {
+        if (student == null) {
+            return false;
+        }
+
+        entityManager.getTransaction().begin();
+        Student persistStudent = entityManager.find(Student.class, student.getsId());
+        if (persistStudent == null) {
+            return false;
+        } else {
+            persistStudent.setActive(false);
             entityManager.getTransaction().commit();
         }
         return true;

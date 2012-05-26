@@ -30,11 +30,14 @@
 
         <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;"/>
 
-        <h:panelGrid columns="2" >
+        <h:inputHidden id="id" value="#{studentManagedBean.selectedStudent.sId}"/>
+
+        <h:panelGrid columns="2">
             Full Name :
-            <h:inputText id="name" value="#{studentManagedBean.selectedStudent.name}" label="Full Name" readonly="studentManagedBean.selectedStudent.name.readonly" />
+            <h:inputText id="name" value="#{studentManagedBean.selectedStudent.name}" label="Full Name"
+                         readonly="studentManagedBean.selectedStudent.name.readonly"/>
             Address :
-            <h:inputTextarea id="address" value="#{studentManagedBean.selectedStudent.address}" />
+            <h:inputTextarea id="address" value="#{studentManagedBean.selectedStudent.address}"/>
             Grade :
             <h:selectOneMenu id="grade" value="#{studentManagedBean.selectedStudent.grade}">
                 <f:selectItem itemValue="1" itemLabel="1"/>
@@ -51,9 +54,9 @@
                 <f:selectItem itemValue="12" itemLabel="12"/>
             </h:selectOneMenu>
             Parent Name :
-            <h:inputText id="parentName" value="#{studentManagedBean.selectedStudent.parentName}" />
+            <h:inputText id="parentName" value="#{studentManagedBean.selectedStudent.parentName}"/>
         </h:panelGrid>
-        <h:commandButton value="Update" actionListener="#{studentManagedBean.updateStudent}" />
+        <h:commandButton value="Update" actionListener="#{studentManagedBean.updateStudent}"/>
         <h:commandButton value="Reset" type="reset"/>
 
     </h:form>

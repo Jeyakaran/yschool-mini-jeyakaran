@@ -1,6 +1,8 @@
 package org.ymini.yschool.dao;
 
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 /**
@@ -23,6 +25,9 @@ public class Student {
     private int grade;
     @Column(name = "student_parentName")
     private String parentName;
+    @Column(columnDefinition = "TINYINT")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean active = true;
 
     public Student() {
     }
@@ -72,5 +77,13 @@ public class Student {
 
     public void setsId(int sId) {
         this.sId = sId;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

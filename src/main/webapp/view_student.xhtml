@@ -71,6 +71,16 @@
                 </f:facet>
                 <h:outputText value="#{student.parentName}"/>
             </p:column>
+
+            <p:column id="deleteHeader">
+                <f:facet name="header">
+                    <h:outputText value=" "/>
+                </f:facet>
+                <h:commandLink action="#{studentManagedBean.removeStudent}">
+                    <f:setPropertyActionListener target="#{studentManagedBean.selectedStudent}" value="#{student}"/>
+                    <h:graphicImage library="images" name="remove-user.ico"/>
+                </h:commandLink>
+            </p:column>
         </p:dataTable>
 
     </h:form>

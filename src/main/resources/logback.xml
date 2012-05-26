@@ -8,7 +8,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.lordofthejars.foo" level="INFO" additivity="false">
+    <logger name="org.ymini.yschool.managedbean" level="INFO" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 

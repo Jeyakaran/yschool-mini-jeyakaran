@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * Time: 1:23 PM
  */
 @ManagedBean(name = "studentManagedBean")
-@SessionScoped
+@RequestScoped
 public class StudentManagedBean implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(StudentManagedBean.class);
     private Student selectedStudent;
@@ -69,4 +70,11 @@ public class StudentManagedBean implements Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public String removeStudent() {
+        this.studentDAO.removeStudent(selectedStudent);
+        return "view_student";
+    }
+
+
 }
