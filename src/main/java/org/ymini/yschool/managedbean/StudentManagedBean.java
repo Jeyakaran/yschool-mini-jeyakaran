@@ -40,6 +40,14 @@ public class StudentManagedBean implements Serializable {
         return this.studentDAO.getStudentList();
     }
 
+    public List<Student> getSearchList() {
+        if (selectedStudent != null) {
+            return this.studentDAO.getStudentList(selectedStudent.getName(), selectedStudent.getGrade());
+        }
+
+        return null;
+    }
+
     public void updateStudent() {
         this.studentDAO.updateStudent(this.selectedStudent);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Student updated successfully ", null));

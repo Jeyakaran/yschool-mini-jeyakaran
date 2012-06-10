@@ -30,6 +30,17 @@ public class StudentDAO {
         return query.getResultList();
     }
 
+    /*
+    * method returns only active Students
+    */
+    public List<Student> getStudentList(final String name, final int grade) {
+        Query query = entityManager.createQuery("select stu from Student stu where stu.active = :activeValue AND stu.name = :nameValue AND stu.grade = :gradeValue");
+        query.setParameter("activeValue", true);
+        query.setParameter("nameValue", name);
+        query.setParameter("gradeValue", grade);
+        return query.getResultList();
+    }
+
     public boolean addStudent(final Student student) {
         if (student == null) {
             return false;

@@ -11,9 +11,11 @@
     <h3>Menu</h3>
 
     <h:form>
-        <h:commandLink value="Register Student" action="add_student" immediate="true"/>
+        <h:link value="Register Student" outcome="add_student" />
         <br/>
-        <h:commandLink value="View Student Details" action="view_student" immediate="true"/>
+        <h:link value="View Student Details" outcome="view_student"/>
+        <br/>
+        <h:link value="Search Student Details" outcome="search_student"/>
     </h:form>
 </h:body>
 </html>

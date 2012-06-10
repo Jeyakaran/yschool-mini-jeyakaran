@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   User: Jeyakaran
-  Date: 13/5/12
-  Time: 7:26 AM
+  Date: 10/6/12
+  Time: 7:31 AM
 -->
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -14,22 +14,52 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>View Student</title>
+    <title>Search Student</title>
 </h:head>
 
 <h:body>
     <h:form>
-        <h1> View Student Details </h1>
 
-        <h:link value="Home" outcome="index"/>
+        <h1> Search Student </h1>
+        <h:link value="Home" outcome="index" />
         <h:outputText value="&#160;"/>
-        <h:link value="Add Student" outcome="add_student"/>
+        <h:link value="Add Student" outcome="add_student" />
+        <h:outputText value="&#160;"/>
+        <h:link value="View Student Details" outcome="view_student" />
 
         <br/>
 
-        <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;"/>
+        <h:panelGrid columns="3">
+            Full Name :
+            <h:inputText id="name" value="#{studentManagedBean.selectedStudent.name}" required="true" label="Full Name"
+                         validatorMessage="Student Full Name cannot be null"/>
+            <h:message for="name" errorStyle="color: red;" infoStyle="color: green;"/>
+            Grade :
+            <h:selectOneMenu id="grade" value="#{studentManagedBean.selectedStudent.grade}">
+                <f:selectItem itemValue="1" itemLabel="1"/>
+                <f:selectItem itemValue="2" itemLabel="2"/>
+                <f:selectItem itemValue="3" itemLabel="3"/>
+                <f:selectItem itemValue="4" itemLabel="4"/>
+                <f:selectItem itemValue="5" itemLabel="5"/>
+                <f:selectItem itemValue="6" itemLabel="6"/>
+                <f:selectItem itemValue="7" itemLabel="7"/>
+                <f:selectItem itemValue="8" itemLabel="8"/>
+                <f:selectItem itemValue="9" itemLabel="9"/>
+                <f:selectItem itemValue="10" itemLabel="10"/>
+                <f:selectItem itemValue="11" itemLabel="11"/>
+                <f:selectItem itemValue="12" itemLabel="12"/>
+            </h:selectOneMenu>
+            <h:outputText value="&#160;"/>
+        </h:panelGrid>
+        <h:commandButton value="Search">
+            <f:ajax execute="name grade" render="dataTable"/>
+        </h:commandButton>
+        <h:commandButton value="Reset" type="reset"/>
 
-        <p:dataTable id="dataTable" var="student" value="#{studentManagedBean.studentList}">
+        <h1> View Student Details </h1>
+
+
+        <p:dataTable id="dataTable" var="student" value="#{studentManagedBean.searchList}">
             <f:facet name="header">
                 Student List
             </f:facet>
