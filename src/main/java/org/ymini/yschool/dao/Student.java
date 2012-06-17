@@ -4,6 +4,8 @@ package org.ymini.yschool.dao;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Student entity class
@@ -28,6 +30,8 @@ public class Student {
     @Column(columnDefinition = "TINYINT")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean active = true;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.student", cascade = CascadeType.ALL)
+    private Set<StudentSubject> studentSubjectSet = new HashSet<StudentSubject>(0);
 
     public Student() {
     }
@@ -85,5 +89,13 @@ public class Student {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public Set<StudentSubject> getStudentSubjectSet() {
+        return studentSubjectSet;
+    }
+
+    public void setStudentSubjectSet(Set<StudentSubject> studentSubjectSet) {
+        this.studentSubjectSet = studentSubjectSet;
     }
 }

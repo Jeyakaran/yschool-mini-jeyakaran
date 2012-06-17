@@ -6,6 +6,9 @@
     <persistence-unit name="yschool-mini-mysql" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>org.ymini.yschool.dao.Student</class>
+        <class>org.ymini.yschool.dao.Subject</class>
+        <class>org.ymini.yschool.dao.StudentSubject</class>
+        <class>org.ymini.yschool.dao.StudentSubjectId</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/yschool_mini_sms"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
